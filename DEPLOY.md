@@ -26,6 +26,19 @@ Image name:
 
 `ghcr.io/offshoremonitoringltd/website_offshoremonitoring:latest`
 
+### Private org + Actions
+
+This repository is **private** under the `OffshoreMonitoringLtd` organization. GitHub Actions on private org repos requires an org plan that includes Actions minutes (Team/Enterprise, or equivalent billing). If workflows show `startup_failure` / `BuildFailed` with no job logs, an org owner must:
+
+1. Enable Actions for the org/repo, and  
+2. Ensure billing/minutes allow private-repo workflows  
+
+Until then you can still build locally:
+
+```bash
+docker compose up --build -d
+```
+
 ## GitHub secrets & variables
 
 ### Always (image push)
