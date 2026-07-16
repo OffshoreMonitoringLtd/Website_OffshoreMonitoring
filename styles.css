@@ -403,6 +403,37 @@ main { min-height: 70vh; }
 }
 .manifesto .bullet-list span::before { color: #087c67; }
 
+.story-bridge {
+  max-width: 46rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  padding-bottom: clamp(1.5rem, 3vw, 2rem);
+  border-bottom: 1px solid var(--line);
+}
+.story-bridge .kicker { margin-bottom: 1rem; }
+.story-bridge-title {
+  margin: 0 0 .85rem;
+  max-width: 22ch;
+  font-family: var(--display);
+  font-size: clamp(1.55rem, 3vw, 2.4rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -.04em;
+  text-wrap: balance;
+}
+.story-bridge-line {
+  margin: 0;
+  max-width: 48ch;
+  color: var(--mist);
+  font-size: clamp(.95rem, 1.2vw, 1.05rem);
+  line-height: 1.6;
+}
+.story-bridge-link { margin: -1.5rem 0 2rem; }
+.about-follow { margin-top: .5rem; }
+.manifesto + .section,
+.manifesto + .section-tight {
+  padding-top: clamp(3.5rem, 7vw, 5.5rem);
+}
+
 .capability-header {
   display: grid;
   grid-template-columns: var(--split);

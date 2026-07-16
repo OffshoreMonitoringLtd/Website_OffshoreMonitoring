@@ -8,10 +8,25 @@ Public URL:
 
 **https://offshoremonitoringltd.github.io/Website_OffshoreMonitoring/**
 
-- Workflow: `.github/workflows/pages.yml`
-- Deploys on every push to `main` (and manual “Run workflow”)
-- Repo must stay **public** for free Pages on GitHub’s free plan
+- Repo is **public** (required for free Pages)
+- Live site is served from the **`gh-pages`** branch (classic Pages; no Actions required)
 - Hash routes (`#/team`, `#/projects`, …) work without a server rewrite
+- Optional workflow `.github/workflows/pages.yml` exists, but org Actions may be blocked by billing — branch deploy is the reliable path
+
+### Update the live site after content changes
+
+From the project root:
+
+```bash
+# publish current site files to gh-pages
+tmpdir=$(mktemp -d)
+cp index.html app.js styles.css "$tmpdir/"
+cp -r assets "$tmpdir/"
+touch "$tmpdir/.nojekyll"
+# then commit/push that folder to the gh-pages branch
+```
+
+Or merge/copy updates onto `gh-pages` and push.
 
 ## Local run
 

@@ -177,6 +177,15 @@ function manifestoBand(kicker, titleHtml, leftCopy, rightCopy, extra = "") {
     </section>`;
 }
 
+function storyBridge(kicker, title, line) {
+  return `
+    <div class="story-bridge reveal">
+      <p class="kicker">${kicker}</p>
+      <h2 class="story-bridge-title">${title}</h2>
+      <p class="story-bridge-line">${line}</p>
+    </div>`;
+}
+
 function detailRows(items) {
   return `
     <div class="detail-stack">
@@ -297,13 +306,17 @@ function technologiesPage() {
   return `
     ${pageHero("01", "Technology platform", "From sensing to certainty.", "We combine data production, advanced analysis and secure system integration to make maritime environments more observable, predictable and manageable.")}
     ${manifestoBand(
-      "The architecture",
-      "Five capabilities. One clear view. <span>Value appears only when every layer works together.</span>",
-      "We produce data through maritime sensing, satellite observations and resilient positioning, then analyse it through modelling, machine learning and AI.",
-      "Secure interfaces connect those layers into operational systems designed for reliability and cyber resilience at sea.",
-      `<div class="bullet-list reveal"><span>Data production</span><span>Data analysis</span><span>System integration</span><span>Operational deployment</span></div>`
+      "The argument",
+      "Certainty is not a single sensor. <span>It is a connected stack—from signal to decision.</span>",
+      "Raw maritime data only becomes useful when sensing, satellite observation, positioning and AI are designed as one architecture.",
+      "The five capabilities below are that stack: each layer has a job, and together they turn measurements into operational certainty."
     )}
-    <section class="section-tight"><div class="wrap">${detailRows(technologies)}</div></section>`;
+    <section class="section-tight">
+      <div class="wrap">
+        ${storyBridge("The stack", "Five capabilities that make the picture complete.", "Read them as one system—not five separate products.")}
+        ${detailRows(technologies)}
+      </div>
+    </section>`;
 }
 
 function applicationsPage() {
@@ -316,18 +329,20 @@ function applicationsPage() {
   return `
     ${pageHero("02", "Applications", "Intelligence where it matters.", "Our systems combine sensing, satellite observations, positioning and analytics to solve operational challenges in safety, security, compliance and environmental management.")}
     ${manifestoBand(
-      "Where it lands",
-      "Operational problems. Practical answers. <span>Built for decisions made under real maritime pressure.</span>",
-      "From port and offshore security to voyage compliance and waterbody intelligence, sensing and analytics become tools teams can use day to day.",
-      "The aim is not another research output that stays in the lab—it is decision-ready capability in the environments where it matters most."
+      "The argument",
+      "Technology only matters where decisions are made. <span>These are the operational arenas we design for.</span>",
+      "Ports, offshore assets, navigation bridges and waterbodies each face different pressure—but they share a need for timely, trustworthy intelligence.",
+      "The domains below show where that intelligence lands today. The concepts that follow are where we are taking it next."
     )}
-    <section class="section"><div class="wrap">${detailRows(applications)}</div></section>
     <section class="section">
       <div class="wrap">
-        <div class="capability-header reveal">
-          <div><p class="kicker">Emerging concepts</p><h2 class="section-title">Next on the horizon.</h2></div>
-          <p>Focused concepts translate specialist research into practical maritime capabilities.</p>
-        </div>
+        ${storyBridge("In the field", "Four domains. One purpose: clearer maritime decisions.", "Each application below is a place where sensing and analytics become day-to-day operational tools.")}
+        ${detailRows(applications)}
+      </div>
+    </section>
+    <section class="section">
+      <div class="wrap">
+        ${storyBridge("Next from the same thread", "Emerging concepts that extend those domains.", "These ideas continue the same story—new ways to apply the stack to problems still forming at sea.")}
         <div class="concept-grid">
           ${concepts.map((concept, index) => `
             <article class="concept reveal"><span class="num">${String(index + 1).padStart(2, "0")}</span><h3>${concept[0]}</h3><p>${concept[1]}</p></article>
@@ -341,14 +356,19 @@ function projectsPage() {
   return `
     ${pageHero("03", "Research & innovation", "Projects with measurable impact.", "We lead and participate in international programmes that combine sensing, EO data, modelling and AI into practical tools for maritime operations and environmental management.")}
     ${manifestoBand(
-      "Selected portfolio",
-      "From laboratory to open water. <span>Programmes that turn sensing, EO data and AI into working maritime tools.</span>",
-      "We contribute technical leadership, system design and delivery across consortia spanning research organisations, operators and technology partners.",
-      "Each project is chosen for measurable operational or environmental impact—not novelty alone.",
-      `<a class="text-link reveal" href="https://ec.europa.eu/info/funding-tenders/opportunities/portal/" target="_blank" rel="noopener">EC Portal profile <span>↗</span></a>`
+      "The argument",
+      "Impact is proven in programmes, not pitches. <span>From laboratory ambition to tools that reach open water.</span>",
+      "We contribute technical leadership, system design and delivery across consortia of research organisations, operators and technology partners.",
+      "The portfolio below is the evidence: selected programmes where sensing, EO data and AI became working maritime capability."
     )}
     <section class="section-tight">
       <div class="wrap">
+        ${storyBridge(
+          "The evidence",
+          "Selected programmes that carried the idea into operation.",
+          "Each project below is a chapter of that path—from research partnership to measurable outcome."
+        )}
+        <a class="text-link story-bridge-link reveal" href="https://ec.europa.eu/info/funding-tenders/opportunities/portal/" target="_blank" rel="noopener">EC Portal profile <span>↗</span></a>
         <div class="all-projects">
           ${projects.map((project, index) => `
             <a class="project-row reveal" href="${project.url}" target="_blank" rel="noopener">
@@ -374,12 +394,17 @@ function leadershipPage() {
   return `
     ${pageHero("04", "Project leadership", "From ambitious idea to working system.", "We provide the technical direction, development discipline and consortium leadership needed to move complex maritime innovation programmes forward.")}
     ${manifestoBand(
-      "How we lead",
-      "Clarity across the full project lifecycle. <span>Good coordination is technical work.</span>",
-      "Our team works across research organisations, developers, maritime operators and public institutions.",
-      "We align project architecture, delivery and intellectual property around one shared operational outcome."
+      "The argument",
+      "Programmes succeed when leadership is technical. <span>Coordination is part of the engineering.</span>",
+      "We work across research organisations, developers, maritime operators and public institutions—keeping architecture, delivery and intellectual property aligned.",
+      "The services below are how that leadership shows up in practice: the full path from ambitious idea to working system."
     )}
-    <section class="section-tight"><div class="wrap">${detailRows(services)}</div></section>`;
+    <section class="section-tight">
+      <div class="wrap">
+        ${storyBridge("How we deliver", "Five ways we move a programme from idea to impact.", "Each item below is a stage of the same lifecycle—not a separate service catalogue.")}
+        ${detailRows(services)}
+      </div>
+    </section>`;
 }
 
 function aboutPage() {
@@ -387,25 +412,27 @@ function aboutPage() {
     ${pageHero("05", "About Offshore Monitoring", "Built to understand complex waters.", "We develop and integrate technologies that enable monitoring, situational awareness and operational decision-making across maritime and offshore environments.")}
     <section class="manifesto section">
       <div class="wrap manifesto-grid">
-        <p class="kicker reveal">Our focus</p>
+        <p class="kicker reveal">The argument</p>
         <div>
-          <h2 class="reveal">Scientific depth. Operational relevance. <span>Innovation designed to leave the lab.</span></h2>
+          <h2 class="reveal">Scientific depth. Operational relevance. <span>Innovation designed to leave the lab—and only then does it scale.</span></h2>
           <div class="manifesto-copy reveal">
-            <p>Our work combines maritime sensing, Earth observation, analytical modelling, artificial intelligence and robust system integration.</p>
-            <p>These capabilities support safety, security, environmental monitoring and operational optimisation, with attention to reliability and cybersecurity from the outset.</p>
+            <p>Our work combines maritime sensing, Earth observation, analytical modelling, artificial intelligence and robust system integration for safety, security and environmental monitoring.</p>
+            <p>That depth only becomes impact when it is shared: research partners, operators and technology teams building together. Collaboration is the next chapter of the same story.</p>
           </div>
         </div>
       </div>
     </section>
     <section class="section">
-      <div class="wrap intro-grid">
-        <div><p class="kicker reveal">Collaboration</p><h2 class="section-title reveal">Innovation is a team sport.</h2></div>
-        <div class="intro-copy reveal">
-          <p class="lead">We work across disciplines, industries and borders.</p>
-          <p>Offshore Monitoring collaborates with research institutions, technology developers, maritime operators and infrastructure managers through research partnerships, technology-development activities and operational monitoring projects.</p>
-          <div class="link-row">
-            <a class="text-link" href="#/team">Meet the team <span>↗</span></a>
-            <a class="text-link" href="#/contact">Work with us <span>↗</span></a>
+      <div class="wrap">
+        ${storyBridge("What follows from that", "Innovation is a team sport—by design.", "Because complex waters are never solved alone, we work across disciplines, industries and borders.")}
+        <div class="intro-grid about-follow">
+          <div class="intro-copy reveal">
+            <p class="lead">We work across disciplines, industries and borders.</p>
+            <p>Offshore Monitoring collaborates with research institutions, technology developers, maritime operators and infrastructure managers through research partnerships, technology-development activities and operational monitoring projects.</p>
+            <div class="link-row">
+              <a class="text-link" href="#/team">Meet the team <span>↗</span></a>
+              <a class="text-link" href="#/contact">Work with us <span>↗</span></a>
+            </div>
           </div>
         </div>
       </div>
