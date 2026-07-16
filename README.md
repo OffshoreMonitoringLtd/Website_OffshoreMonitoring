@@ -4,11 +4,14 @@ Modern static marketing site for [Offshore Monitoring](https://offshoremonitorin
 
 **Repo:** https://github.com/OffshoreMonitoringLtd/Website_OffshoreMonitoring
 
+**Live (GitHub Pages):** https://offshoremonitoringltd.github.io/Website_OffshoreMonitoring/
+
 ## Stack
 
 - Static HTML / CSS / JS (hash-router SPA)
-- Docker + nginx for production
-- GitHub Actions → GHCR image + optional SSH deploy behind Cloudflare
+- Free HTTPS hosting via GitHub Pages
+- Docker + nginx for VPS / Cloudflare deploy
+- GitHub Actions → Pages deploy, GHCR image, optional SSH deploy
 
 ## Quick start (local)
 

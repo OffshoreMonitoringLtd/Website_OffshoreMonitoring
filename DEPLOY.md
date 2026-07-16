@@ -1,6 +1,17 @@
 # Deploy guide — Website Offshore Monitoring
 
-Static site in Docker (nginx), built on GitHub Actions, runnable on any VPS behind Cloudflare.
+Static site in Docker (nginx), built on GitHub Actions, runnable on any VPS behind Cloudflare — plus free GitHub Pages.
+
+## GitHub Pages (free HTTPS)
+
+Public URL:
+
+**https://offshoremonitoringltd.github.io/Website_OffshoreMonitoring/**
+
+- Workflow: `.github/workflows/pages.yml`
+- Deploys on every push to `main` (and manual “Run workflow”)
+- Repo must stay **public** for free Pages on GitHub’s free plan
+- Hash routes (`#/team`, `#/projects`, …) work without a server rewrite
 
 ## Local run
 
