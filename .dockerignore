@@ -1,0 +1,10 @@
+.git
+.github
+.gitignore
+.dockerignore
+*.md
+!README.md
+.env
+.env.*
+.DS_Store
+design_reference.html

@@ -1,0 +1,19 @@
+# Local / OS
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+!.env.example
+
+# Editors
+.idea/
+.vscode/
+*.swp
+
+# Docker
+*.tar
+
+# Node (if added later)
+node_modules/
+dist/

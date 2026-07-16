@@ -1,0 +1,98 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: offshoremonitoringltd/website_offshoremonitoring
+
+jobs:
+  build-and-push:
+    name: Build & push image
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=sha,prefix=
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  deploy:
+    name: Deploy to VPS (SSH)
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    # Set repository variable ENABLE_SSH_DEPLOY=true after secrets are configured
+    if: ${{ vars.ENABLE_SSH_DEPLOY == 'true' }}
+    steps:
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1.2.0
+        env:
+          GHCR_USER: ${{ secrets.GHCR_USER }}
+          GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          port: ${{ secrets.DEPLOY_PORT || 22 }}
+          envs: GHCR_USER,GHCR_TOKEN,DEPLOY_PATH
+          script: |
+            set -euo pipefail
+            APP_DIR="${DEPLOY_PATH:-/opt/osm-website}"
+            mkdir -p "$APP_DIR"
+            cd "$APP_DIR"
+
+            if [ ! -f docker-compose.yml ]; then
+              cat > docker-compose.yml <<'EOF'
+            services:
+              web:
+                image: ghcr.io/offshoremonitoringltd/website_offshoremonitoring:latest
+                container_name: osm-website
+                ports:
+                  - "8080:80"
+                restart: unless-stopped
+            EOF
+            fi
+
+            if [ -n "${GHCR_TOKEN:-}" ]; then
+              echo "$GHCR_TOKEN" | docker login ghcr.io -u "${GHCR_USER:-github}" --password-stdin
+            fi
+
+            docker pull ghcr.io/offshoremonitoringltd/website_offshoremonitoring:latest
+            IMAGE_NAME=ghcr.io/offshoremonitoringltd/website_offshoremonitoring IMAGE_TAG=latest \
+              docker compose up -d --remove-orphans
+            docker image prune -f
+            curl -fsS http://127.0.0.1:8080/healthz
