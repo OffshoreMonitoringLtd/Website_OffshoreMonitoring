@@ -403,7 +403,7 @@ main { min-height: 70vh; }
 }
 .manifesto .bullet-list span::before { color: #087c67; }
 
-/* Quiet handoff into lists — label only, no second manifesto */
+/* Quiet handoff into lists; label only, no second manifesto */
 .section-label {
   margin: 0 0 clamp(1.75rem, 3.5vw, 2.5rem);
   color: var(--sea);

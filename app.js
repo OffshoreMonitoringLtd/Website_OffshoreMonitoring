@@ -26,7 +26,7 @@ const technologies = [
   {
     title: "AI, analytics and modelling",
     teaser: "Forecasting and anomaly detection that turn signals into insight.",
-    text: "Machine learning, forecasting and anomaly detection transform EO, positioning and multi-sensor measurements into operational insight and risk prediction. Models are designed to support real decisions—not just dashboards—across safety, security and environmental use cases.",
+    text: "Machine learning, forecasting and anomaly detection transform EO, positioning and multi-sensor measurements into operational insight and risk prediction. Models are designed to support real decisions, not just dashboards, across safety, security and environmental use cases.",
     tags: ["Deep learning", "Nowcasting", "Anomaly detection", "Risk prediction"]
   },
   {
@@ -85,7 +85,7 @@ const projects = [
   {
     name: "SafeNav",
     category: "Collision prevention",
-    text: "Multi-source detection and COLREG-based decision support for vessels, installations, submerged objects and marine mammals—a step toward remote and autonomous shipping.",
+    text: "Multi-source detection and COLREG-based decision support for vessels, installations, submerged objects and marine mammals: a step toward remote and autonomous shipping.",
     url: "https://www.safenavsystem.com/",
     image: "assets/site-images/project-logos-3.png"
   },
@@ -139,7 +139,7 @@ const team = [
   ["Chief Technical Officer", "Dr. Waqas Qazi", "15+ years of expertise in remote sensing and satellite oceanography. Ph.D. in Aerospace Engineering Sciences. Develops analytical and AI-based methods for EO and maritime monitoring data in operational projects.", "assets/site-images/person-3.png"],
   ["AI Systems Design · DevOps · DevSecOps", "Majeed Hussain", "Specialist in designing AI systems, DevOps and DevSecOps, with experience in safety-critical systems and applied cybersecurity in production AI systems. 8+ years of experience in AI. MSc in Computer Vision and Robotics.", "assets/site-images/majeed-v3.png"],
   ["Head of Accounts", "Constantinos Lavithis", "Finance professional with a B.A. Hons. in Accountancy & Finance and ICAEW membership. 8 years of experience in audit, accounting, payroll, banking, budgeting and financial management, including financial coordination on R&D projects.", "assets/site-images/person-4.png"],
-  ["Proposal Manager", "Rebekah Matrosova", "Skilled programme manager with 15+ years of experience in grant- and publicly funded projects in the U.S. and EU. MPA – Management.", "assets/site-images/OSM_Rebekah-resized.png"]
+  ["Proposal Manager", "Rebekah Matrosova", "Skilled programme manager with 15+ years of experience in grant- and publicly funded projects in the U.S. and EU. MPA in Management.", "assets/site-images/OSM_Rebekah-resized.png"]
 ];
 
 function pageHero(index, kicker, title, lead) {
@@ -177,7 +177,7 @@ function manifestoBand(kicker, titleHtml, leftCopy, rightCopy, extra = "") {
     </section>`;
 }
 
-/** Quiet label above a list — no second essay. */
+/** Quiet label above a list; no second essay. */
 function sectionLabel(label) {
   return `<p class="section-label reveal">${label}</p>`;
 }
@@ -207,7 +207,7 @@ function homePage() {
       <div class="hero-grid"></div>
       <div class="chapter-readout">
         <i></i>
-        <span id="chapter-label">CH.1 — AT SEA</span>
+        <span id="chapter-label">CH.1 · AT SEA</span>
       </div>
       <div class="hero-content">
         <p class="kicker reveal">Maritime monitoring · Sensing · Intelligence</p>
@@ -216,7 +216,7 @@ function homePage() {
           <span id="hero-line-2"><em>From the surface, always watching.</em></span>
         </h1>
         <div class="hero-bottom reveal">
-          <p>We connect advanced sensing, Earth observation, resilient positioning and AI to help maritime operators understand what is happening—and what comes next.</p>
+          <p>We connect advanced sensing, Earth observation, resilient positioning and AI to help maritime operators understand what is happening, and what comes next.</p>
           <div class="story-status">
             <span class="signal-status"><i></i>Systems online</span>
             <div class="chapter-dots" id="chapter-dots" aria-label="Video chapters"></div>
@@ -267,7 +267,7 @@ function homePage() {
         <div class="radar-copy reveal">
           <p class="kicker">Operational intelligence</p>
           <h2 class="section-title">A living picture of the maritime domain.</h2>
-          <p>LADAR, EO imagery, positioning and in-situ sensing fuse into decision-ready information—supporting safer navigation, stronger infrastructure and healthier waters.</p>
+          <p>LADAR, EO imagery, positioning and in-situ sensing fuse into decision-ready information that supports safer navigation, stronger infrastructure and healthier waters.</p>
           <div class="metrics">
             <div class="metric"><strong>360°</strong><span>Situational awareness</span></div>
             <div class="metric"><strong>24/7</strong><span>Continuous monitoring</span></div>
@@ -303,9 +303,9 @@ function technologiesPage() {
     ${pageHero("01", "Technology platform", "From sensing to certainty.", "We combine data production, advanced analysis and secure system integration to make maritime environments more observable, predictable and manageable.")}
     ${manifestoBand(
       "Point of view",
-      "Certainty is not a single sensor. <span>It is a connected stack—from signal to decision.</span>",
+      "Certainty is not a single sensor. <span>It is a connected stack, from signal to decision.</span>",
       "A radar return, a satellite scene or a position fix only becomes useful when it is designed into one architecture with the layers around it.",
-      "We build for reliability and cyber resilience from the start—so the picture operators trust at sea is coherent, not a pile of disconnected tools."
+      "We build for reliability and cyber resilience from the start, so the picture operators trust at sea is coherent, not a pile of disconnected tools."
     )}
     <section class="section-tight">
       <div class="wrap">
@@ -326,9 +326,9 @@ function applicationsPage() {
     ${pageHero("02", "Applications", "Intelligence where it matters.", "Our systems combine sensing, satellite observations, positioning and analytics to solve operational challenges in safety, security, compliance and environmental management.")}
     ${manifestoBand(
       "Point of view",
-      "Technology only matters where decisions are made. <span>Under real maritime pressure—not in the abstract.</span>",
-      "On a bridge, at a port gate or beside an offshore asset, the question is rarely “what can the model do?” It is “what should we do next?”",
-      "We design sensing and analytics for that moment: timely, trustworthy and usable by the people who carry the risk."
+      "Technology only matters where decisions are made. <span>Under real maritime pressure, not in the abstract.</span>",
+      "On a vessel bridge, in a port, or beside an offshore installation, people need clear information they can act on when conditions change and time is short.",
+      "We design sensing and analytics for those moments: timely, trustworthy and usable by the people who carry the operational risk."
     )}
     <section class="section">
       <div class="wrap">
@@ -354,7 +354,7 @@ function projectsPage() {
     ${manifestoBand(
       "Point of view",
       "Impact is proven in programmes, not pitches. <span>From laboratory ambition to tools that reach open water.</span>",
-      "International consortia are where architecture, partners and delivery discipline meet—research organisations, operators and technology teams building toward a shared outcome.",
+      "International consortia are where architecture, partners and delivery discipline meet: research organisations, operators and technology teams building toward a shared outcome.",
       "We stay for the hard middle: technical leadership, system design and the work that turns a funded idea into capability that can leave the lab."
     )}
     <section class="section-tight">
@@ -389,7 +389,7 @@ function leadershipPage() {
     ${pageHero("04", "Project leadership", "From ambitious idea to working system.", "We provide the technical direction, development discipline and consortium leadership needed to move complex maritime innovation programmes forward.")}
     ${manifestoBand(
       "Point of view",
-      "Programmes succeed when leadership is technical. <span>Coordination is part of the engineering—not a layer on top of it.</span>",
+      "Programmes succeed when leadership is technical. <span>Coordination is part of the engineering, not a layer on top of it.</span>",
       "Complex maritime innovation needs someone who can hold architecture, partners and delivery in the same frame.",
       "We work with research organisations, developers, operators and public institutions so project vision and intellectual property stay aligned with the operational outcome."
     )}
@@ -410,7 +410,7 @@ function aboutPage() {
         <div>
           <h2 class="reveal">Scientific depth. Operational relevance. <span>Innovation designed to leave the lab.</span></h2>
           <div class="manifesto-copy reveal">
-            <p>We combine maritime sensing, Earth observation, analytical modelling, artificial intelligence and robust system integration—with reliability and cybersecurity treated as design constraints, not afterthoughts.</p>
+            <p>We combine maritime sensing, Earth observation, analytical modelling, artificial intelligence and robust system integration, with reliability and cybersecurity treated as design constraints, not afterthoughts.</p>
             <p>The aim is not more research for its own sake. It is capability that can survive contact with weather, regulation, operators and real infrastructure.</p>
           </div>
         </div>
@@ -552,10 +552,10 @@ function initHeroStory() {
   if (!video || !hero || !lineOne || !lineTwo || !label || !dotsWrap) return;
 
   const chapters = [
-    { start: 0, end: 2, label: "CH.1 — AT SEA", lineOne: "Sensing the ocean.", lineTwo: "From the surface, always watching." },
-    { start: 2, end: 5, label: "CH.2 — SEABED TO ORBIT", lineOne: "From seabed to satellite.", lineTwo: "A continuous signal, end to end." },
-    { start: 5, end: 13, label: "CH.3 — INTELLIGENCE", lineOne: "Raw signals.", lineTwo: "Turned into operational intelligence." },
-    { start: 13, end: 15.05, label: "CH.4 — IMPACT", lineOne: "From idea to impact.", lineTwo: "R&D that reaches the water." }
+    { start: 0, end: 2, label: "CH.1 · AT SEA", lineOne: "Sensing the ocean.", lineTwo: "From the surface, always watching." },
+    { start: 2, end: 5, label: "CH.2 · SEABED TO ORBIT", lineOne: "From seabed to satellite.", lineTwo: "A continuous signal, end to end." },
+    { start: 5, end: 13, label: "CH.3 · INTELLIGENCE", lineOne: "Raw signals.", lineTwo: "Turned into operational intelligence." },
+    { start: 13, end: 15.05, label: "CH.4 · IMPACT", lineOne: "From idea to impact.", lineTwo: "R&D that reaches the water." }
   ];
   let activeIndex = 0;
   let transitionTimer = null;
@@ -644,10 +644,10 @@ function render() {
   const route = routes[path];
   if (!route) {
     app.innerHTML = `<section class="not-found"><div><h1>404</h1><p>This coordinate is outside the charted area.</p><a class="text-link" href="#/">Return home <span>↗</span></a></div></section>`;
-    document.title = "Page not found — Offshore Monitoring";
+    document.title = "Page not found · Offshore Monitoring";
   } else {
     app.innerHTML = route.render();
-    document.title = `${route.title} — Offshore Monitoring`;
+    document.title = `${route.title} · Offshore Monitoring`;
   }
   document.querySelectorAll(".desktop-nav a").forEach(link => {
     link.classList.toggle("active", link.getAttribute("href") === `#${path}`);
