@@ -150,7 +150,6 @@ function pageHero(index, kicker, title, lead) {
       <div class="wrap page-hero-inner">
         <div class="page-hero-meta reveal">
           <p class="kicker">${kicker}</p>
-          <span class="page-hero-index">${index}</span>
         </div>
         <div class="page-hero-main">
           <h1 class="page-title reveal">${title}</h1>
@@ -185,9 +184,8 @@ function sectionLabel(label) {
 function detailRows(items) {
   return `
     <div class="detail-stack">
-      ${items.map((item, index) => `
+      ${items.map(item => `
         <article class="detail-row reveal">
-          <span class="num">${String(index + 1).padStart(2, "0")}</span>
           <h2>${item.title}</h2>
           <div>
             <p>${item.text}</p>
@@ -231,10 +229,10 @@ function homePage() {
       <div class="wrap manifesto-grid">
         <p class="kicker reveal">What we do</p>
         <div>
-          <h2 class="reveal">From raw signals to a clear operational picture. <span>Engineered for the realities of life at sea.</span></h2>
+          <h2 class="reveal">From pioneering sensing to a clear operational picture. <span>Engineered for the realities of life at sea.</span></h2>
           <div class="manifesto-copy reveal">
-            <p>Offshore Monitoring develops sensing technologies, Earth observation analytics, high-accuracy satellite positioning and advanced modelling for maritime safety, infrastructure protection and environmental monitoring.</p>
-            <p>Our monitoring architectures integrate LADAR perception, multi-sensor data and safety-conscious AI with cybersecurity practices built for demanding operational environments.</p>
+            <p>Offshore Monitoring sits at the cutting edge of maritime R&amp;D: sensing technologies, Earth observation analytics, high-accuracy satellite positioning and advanced modelling for safety, infrastructure protection and environmental monitoring.</p>
+            <p>Our work turns innovative research into operational architectures, integrating LADAR perception, multi-sensor data and safety-conscious AI with cybersecurity practices built for demanding environments at sea.</p>
           </div>
         </div>
       </div>
@@ -250,9 +248,8 @@ function homePage() {
           <p>From data production through analysis to secure system integration.</p>
         </div>
         <div class="capability-list">
-          ${technologies.map((item, index) => `
+          ${technologies.map(item => `
             <div class="capability reveal">
-              <span class="num">${String(index + 1).padStart(2, "0")}</span>
               <h3>${item.title}</h3>
               <p>${item.teaser}</p>
             </div>`).join("")}
@@ -287,9 +284,9 @@ function homePage() {
           <a class="text-link" href="#/projects">View all projects <span>↗</span></a>
         </div>
         <div class="project-cards">
-          ${projects.slice(0, 3).map((project, index) => `
+          ${projects.slice(0, 3).map(project => `
             <a class="project-card reveal" href="${project.url}" target="_blank" rel="noopener">
-              <div class="project-meta"><span>${String(index + 1).padStart(2, "0")}</span><span>${project.category}</span></div>
+              <div class="project-meta"><span>${project.category}</span></div>
               <div class="project-logo"><img src="${project.image}" alt="${project.name} project logo" loading="lazy"></div>
               <div class="project-card-copy"><h3>${project.name}</h3><p>${project.text}</p></div>
             </a>`).join("")}
@@ -303,7 +300,7 @@ function technologiesPage() {
     ${pageHero("01", "Technology platform", "From sensing to certainty.", "We combine data production, advanced analysis and secure system integration to make maritime environments more observable, predictable and manageable.")}
     ${manifestoBand(
       "Point of view",
-      "Certainty is not a single sensor. <span>It is a connected stack, from signal to decision.</span>",
+      "Maritime certainty comes from a connected stack. <span>From the first signal through to the decision on the bridge.</span>",
       "A radar return, a satellite scene or a position fix only becomes useful when it is designed into one architecture with the layers around it.",
       "We build for reliability and cyber resilience from the start, so the picture operators trust at sea is coherent, not a pile of disconnected tools."
     )}
@@ -340,8 +337,8 @@ function applicationsPage() {
       <div class="wrap">
         ${sectionLabel("Emerging concepts")}
         <div class="concept-grid">
-          ${concepts.map((concept, index) => `
-            <article class="concept reveal"><span class="num">${String(index + 1).padStart(2, "0")}</span><h3>${concept[0]}</h3><p>${concept[1]}</p></article>
+          ${concepts.map(concept => `
+            <article class="concept reveal"><h3>${concept[0]}</h3><p>${concept[1]}</p></article>
           `).join("")}
         </div>
       </div>
@@ -361,12 +358,11 @@ function projectsPage() {
       <div class="wrap">
         <div class="section-label-row reveal">
           ${sectionLabel("Selected programmes")}
-          <a class="text-link" href="https://ec.europa.eu/info/funding-tenders/opportunities/portal/" target="_blank" rel="noopener">EC Portal profile <span>↗</span></a>
+          <a class="portal-cta" href="https://ec.europa.eu/info/funding-tenders/opportunities/portal/" target="_blank" rel="noopener">EC Portal profile <span>↗</span></a>
         </div>
         <div class="all-projects">
-          ${projects.map((project, index) => `
+          ${projects.map(project => `
             <a class="project-row reveal" href="${project.url}" target="_blank" rel="noopener">
-              <span class="num">${String(index + 1).padStart(2, "0")}</span>
               <div class="project-logo"><img src="${project.image}" alt="${project.name} project logo" loading="lazy"></div>
               <span class="category">${project.category}</span>
               <div><h2>${project.name}</h2><p>${project.text}</p></div>
@@ -485,14 +481,18 @@ function contactPage() {
             <div><span>Email</span><a href="mailto:info@offshoremonitoring.com">info@offshoremonitoring.com</a></div>
           </div>
         </div>
-        <form class="contact-form reveal" id="contact-form">
+        <form class="contact-form reveal" id="contact-form" novalidate>
+          <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="hidden" name="_subject" value="Project enquiry · Offshore Monitoring website">
+          <input type="hidden" name="_template" value="table">
           <div class="field"><label for="first-name">First name</label><input id="first-name" name="firstName" required autocomplete="given-name"></div>
           <div class="field"><label for="last-name">Last name</label><input id="last-name" name="lastName" required autocomplete="family-name"></div>
           <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="email"></div>
           <div class="field"><label for="company">Company</label><input id="company" name="company" autocomplete="organization"></div>
-          <div class="field full"><label for="message">Tell us about your project</label><textarea id="message" name="message"></textarea></div>
-          <button class="submit-btn" type="submit">Prepare email ↗</button>
-          <span class="form-note">Submitting opens your email application. No form data is stored by this prototype.</span>
+          <div class="field full"><label for="message">Tell us about your project</label><textarea id="message" name="message" required></textarea></div>
+          <button class="submit-btn" type="submit">Send message ↗</button>
+          <span class="form-note" id="form-note">Messages go to info@offshoremonitoring.com. The first send may ask you to confirm the inbox once.</span>
+          <p class="form-status" id="form-status" hidden role="status"></p>
         </form>
       </div>
     </section>`;
@@ -622,18 +622,66 @@ function initHeroStory() {
   };
 }
 
+const CONTACT_FORM_ENDPOINT = "https://formsubmit.co/ajax/info@offshoremonitoring.com";
+
 function initContactForm() {
   const form = document.querySelector("#contact-form");
   if (!form) return;
-  form.addEventListener("submit", event => {
+  const status = document.querySelector("#form-status");
+  const button = form.querySelector(".submit-btn");
+
+  form.addEventListener("submit", async event => {
     event.preventDefault();
+    if (!form.reportValidity()) return;
+
     const data = new FormData(form);
-    const name = `${data.get("firstName")} ${data.get("lastName")}`.trim();
-    const company = data.get("company") || "Not provided";
-    const message = data.get("message") || "I would like to discuss a collaboration.";
-    const subject = encodeURIComponent(`Project enquiry from ${name}`);
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${data.get("email")}\nCompany: ${company}\n\n${message}`);
-    window.location.href = `mailto:info@offshoremonitoring.com?subject=${subject}&body=${body}`;
+    if (data.get("_honey")) return;
+
+    const name = `${data.get("firstName") || ""} ${data.get("lastName") || ""}`.trim();
+    const payload = {
+      name,
+      email: data.get("email"),
+      company: data.get("company") || "Not provided",
+      message: data.get("message"),
+      _subject: data.get("_subject") || `Project enquiry from ${name}`,
+      _template: "table"
+    };
+
+    button.disabled = true;
+    button.textContent = "Sending…";
+    if (status) {
+      status.hidden = false;
+      status.className = "form-status";
+      status.textContent = "Sending your message…";
+    }
+
+    try {
+      const response = await fetch(CONTACT_FORM_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(result.message || "Could not send the message.");
+      }
+      form.reset();
+      if (status) {
+        status.className = "form-status is-success";
+        status.textContent = "Message sent. We will get back to you soon.";
+      }
+      button.textContent = "Message sent ✓";
+    } catch (error) {
+      if (status) {
+        status.className = "form-status is-error";
+        status.textContent = "Could not send right now. Email us at info@offshoremonitoring.com, or try again after confirming the FormSubmit activation email in that inbox.";
+      }
+      button.disabled = false;
+      button.textContent = "Send message ↗";
+    }
   });
 }
 
